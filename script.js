@@ -22,7 +22,7 @@ function getTodos() {
     return  JSON.parse(localStorage.getItem('todos')) || []
 }
 
-//  запускается при клике на кнопу добавить
+//  запускается при клике на кнопку добавить
 function addTodo(){
     // берем данные из инпута
     let newTodo = todoName.value
@@ -31,7 +31,7 @@ function addTodo(){
        // получаем данные из Localstorage  и создаем массив,  в котором все из этого хранилища  и через запятую значение из input
        let todos = getTodos()
        todos = [...todos, newTodo]
-       // записываем обновленнй массив в LocalStorage
+       // записываем обновленный массив в LocalStorage
        localStorage.setItem('todos', JSON.stringify(todos))
        // перерисовываем список
        view()
@@ -46,7 +46,8 @@ function view() {
     let tasks = getTodos()
     let list = ''
     // перебираем массив со всеми делами и складываем <li>  в переменную list
-    tasks.forEach(item => list = list +  `<li class="list-group-item d-flex justify-content-between">${item} <button class="del-btn btn btn-danger" >Delete</buttonclass></li>`)
+    tasks.forEach(item => list = list +  `<li class="list-group-item d-flex justify-content-between">${item} <button class="del-btn btn btn-danger" >Delete <i class="fas fa-minus-circle"></i> </buttonclass></li>`)
+
     // вставляем список на страницу
     todoBlock.innerHTML = '<ul class="list-group">' + list + '</ul>'
     // берем все кнопки удаления и навешиваем на каждое событие клика
